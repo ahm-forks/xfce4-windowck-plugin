@@ -53,6 +53,15 @@ on_show_on_desktop_toggled (GtkToggleButton *show_on_desktop, WckTitlePlugin *wt
 
 
 static void
+on_only_current_display_toggled (GtkToggleButton *only_current_display, WckTitlePlugin *wtp)
+{
+    wtp->prefs->only_current_display = gtk_toggle_button_get_active (only_current_display);
+
+    reload_wnck_title (wtp);
+}
+
+
+static void
 on_titlesize_changed (GtkSpinButton *titlesize, WckTitlePlugin *wtp)
 {
     wtp->prefs->title_size = gtk_spin_button_get_value (titlesize);
@@ -231,7 +240,7 @@ build_properties_area (WckTitlePlugin *wtp, const gchar *buffer, gsize length)
             GtkComboBox *size_mode, *title_alignment;
             GtkToggleButton *sync_wm_font;
             GtkRadioButton *only_maximized, *active_window;
-            GtkToggleButton *show_on_desktop, *full_name, *two_lines;
+            GtkToggleButton *show_on_desktop, *only_current_display, *full_name, *two_lines;
             GtkFontButton *title_font, *subtitle_font;
             GtkWidget *subtitle_font_label;
 
@@ -251,6 +260,14 @@ build_properties_area (WckTitlePlugin *wtp, const gchar *buffer, gsize length)
                 gtk_toggle_button_set_active (show_on_desktop, wtp->prefs->show_on_desktop);
                 g_signal_connect (show_on_desktop, "toggled",
                                   G_CALLBACK (on_show_on_desktop_toggled), wtp);
+            }
+
+            only_current_display = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wtp->prefs->builder, "only_current_display"));
+            if (G_LIKELY (only_current_display != NULL))
+            {
+                gtk_toggle_button_set_active (only_current_display, wtp->prefs->only_current_display);
+                g_signal_connect (only_current_display, "toggled",
+                                  G_CALLBACK (on_only_current_display_toggled), wtp);
             }
 
             full_name = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wtp->prefs->builder, "full_name"));
