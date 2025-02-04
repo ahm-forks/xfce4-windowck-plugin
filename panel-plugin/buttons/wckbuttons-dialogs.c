@@ -51,6 +51,12 @@ on_only_maximized_toggled (GtkRadioButton *only_maximized, WckButtonsPlugin *wbp
     reload_wnck (wbp->win, wbp->prefs->only_maximized, wbp->prefs->only_current_display, wbp);
 }
 
+static void
+on_only_current_display_toggled (GtkToggleButton *only_current_display, WckButtonsPlugin *wbp)
+{
+    wbp->prefs->only_current_display = gtk_toggle_button_get_active (only_current_display);
+    reload_wnck (wbp->win, wbp->prefs->only_maximized, wbp->prefs->only_current_display, wbp);
+}
 
 static void
 on_show_on_desktop_toggled (GtkToggleButton *show_on_desktop, WckButtonsPlugin *wbp)
@@ -276,7 +282,7 @@ build_properties_area (WckButtonsPlugin *wbp, const gchar *buffer, gsize length)
         if (G_LIKELY (area != NULL))
         {
             GtkRadioButton *only_maximized, *active_window;
-            GtkToggleButton *show_on_desktop, *sync_wm_theme;
+            GtkToggleButton *show_on_desktop, *only_current_display, *sync_wm_theme;
             GtkWidget *theme_name_treeview;
             GtkEntry *button_layout;
 
@@ -298,6 +304,14 @@ build_properties_area (WckButtonsPlugin *wbp, const gchar *buffer, gsize length)
                 gtk_toggle_button_set_active (show_on_desktop, wbp->prefs->show_on_desktop);
                 g_signal_connect (show_on_desktop, "toggled",
                                   G_CALLBACK (on_show_on_desktop_toggled), wbp);
+            }
+
+            only_current_display = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wbp->prefs->builder, "only_current_display"));
+            if (G_LIKELY (only_current_display != NULL))
+            {
+                gtk_toggle_button_set_active (only_current_display, wbp->prefs->only_current_display);
+                g_signal_connect (only_current_display, "toggled",
+                                  G_CALLBACK (on_only_current_display_toggled), wbp);
             }
 
             /* Style widgets */
