@@ -67,6 +67,7 @@ wcktitle_settings_save (WckTitlePreferences *prefs)
 {
     wck_conf_set_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, prefs->only_maximized);
     wck_conf_set_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, prefs->show_on_desktop);
+    wck_conf_set_bool (prefs->conf, SETTING_ONLY_CURRDISPLAY, prefs->only_current_display);
     wck_conf_set_bool (prefs->conf, SETTING_FULL_NAME, prefs->full_name);
     wck_conf_set_bool (prefs->conf, SETTING_TWO_LINES, prefs->two_lines);
     wck_conf_set_bool (prefs->conf, SETTING_SHOW_TOOLTIPS, prefs->show_tooltips);
@@ -91,12 +92,12 @@ wcktitle_save (G_GNUC_UNUSED XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
     wcktitle_settings_save (wtp->prefs);
 }
 
-
 static void
 wcktitle_settings_load (WckTitlePreferences *prefs)
 {
     prefs->only_maximized = wck_conf_get_bool (prefs->conf, SETTING_ONLY_MAXIMIZED, DEFAULT_ONLY_MAXIMIZED);
     prefs->show_on_desktop = wck_conf_get_bool (prefs->conf, SETTING_SHOW_ON_DESKTOP, DEFAULT_SHOW_ON_DESKTOP);
+    prefs->only_current_display = wck_conf_get_bool (prefs->conf, SETTING_ONLY_CURRDISPLAY, DEFAULT_ONLY_CURRDISPLAY);
     prefs->full_name = wck_conf_get_bool (prefs->conf, SETTING_FULL_NAME, DEFAULT_FULL_NAME);
     prefs->two_lines = wck_conf_get_bool (prefs->conf, SETTING_TWO_LINES, DEFAULT_TWO_LINES);
     prefs->show_tooltips = wck_conf_get_bool (prefs->conf, SETTING_SHOW_TOOLTIPS, DEFAULT_SHOW_TOOLTIPS);
