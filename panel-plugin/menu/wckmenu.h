@@ -43,6 +43,7 @@ typedef struct {
     GtkBuilder *builder;
     gboolean only_maximized;        // [T/F] Only track maximized windows
     gboolean show_on_desktop;       // [T/F] Show the plugin on desktop
+    gboolean only_current_display;  // [T/F] Only control windows of current display
     gboolean show_app_icon;         // [T/F] Show the window icon
 
     gint inactive_alpha;            // Alpha for inactive window
