@@ -73,6 +73,7 @@ typedef struct {
     GtkBuilder *builder;
     gboolean only_maximized;        // [T/F] Only track maximized windows
     gboolean show_on_desktop;       // [T/F] Show the plugin on desktop
+    gboolean only_current_display;  // [T/F] Only control windows of current display
     gchar       *theme;             // Selected theme path
     gchar      *button_layout;      // Button layout ["XXX"] (example "HMC" : H=Hide, M=Maximize/unMaximize, C=Close)
     gboolean sync_wm_theme;         // [T/F] Try to use xfwm4 active theme if possible.
