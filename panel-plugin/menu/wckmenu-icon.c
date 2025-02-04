@@ -36,7 +36,7 @@ void reload_wnck_icon (WckMenuPlugin *wmp)
     /* disconnect controlled window icon signal handler */
     wck_signal_handler_disconnect (G_OBJECT(wmp->win->controlwindow), wmp->cih);
 
-    reload_wnck (wmp->win, wmp->prefs->only_maximized, wmp);
+    reload_wnck (wmp->win, wmp->prefs->only_maximized, FALSE, wmp);
 }
 
 

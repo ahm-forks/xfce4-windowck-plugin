@@ -26,6 +26,7 @@
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE
 #endif
 #include <libwnck/libwnck.h>
+#include <libxfce4panel/libxfce4panel.h>
 
 G_BEGIN_DECLS
 
@@ -48,15 +49,18 @@ typedef struct {
     gulong swh;                         // workspace changed handler id
 
     gboolean only_maximized;           // [T/F] Only track maximized windows
+    gboolean only_current_display;     // [T/F] Only control windows of current display
+
+    XfcePanelPlugin* (*get_plugin)(gpointer data);
 
     gpointer data;
 } WckUtils;
 
-void init_wnck (WckUtils *win, gboolean only_maximized, gpointer data);
+void init_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_display, gpointer data);
 void disconnect_wnck (WckUtils *win);
 void on_wck_state_changed (WnckWindow *controlwindow, gpointer data);
 void on_control_window_changed(WnckWindow *controlwindow, WnckWindow *previous, gpointer data);
-void reload_wnck (WckUtils *win, gboolean only_maximized, gpointer data);
+void reload_wnck (WckUtils *win, gboolean only_maximized, gboolean only_current_display, gpointer data);
 void toggle_maximize (WnckWindow *window);
 gboolean wck_signal_handler_disconnect (GObject *object, gulong handler);
 

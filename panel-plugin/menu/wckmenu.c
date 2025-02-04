@@ -299,7 +299,8 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
 
     /* start tracking */
     wmp->win = g_slice_new0 (WckUtils);
-    init_wnck (wmp->win, wmp->prefs->only_maximized, wmp);
+    wmp->win->get_plugin = NULL;
+    init_wnck (wmp->win, wmp->prefs->only_maximized, FALSE, wmp);
 
     /* start tracking icon color */
     init_icon_colors (wmp);

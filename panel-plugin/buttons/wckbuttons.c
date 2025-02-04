@@ -463,7 +463,7 @@ on_refresh_item_activated (GtkMenuItem *refresh, WckButtonsPlugin *wbp)
 {
     wbp->prefs = wckbuttons_read (wbp->plugin);
     init_theme (wbp);
-    reload_wnck (wbp->win, wbp->prefs->only_maximized, wbp);
+    reload_wnck (wbp->win, wbp->prefs->only_maximized, FALSE, wbp);
 }
 
 
@@ -520,7 +520,8 @@ wckbuttons_construct (XfcePanelPlugin *plugin)
 
     /* start tracking windows */
     wbp->win = g_slice_new0 (WckUtils);
-    init_wnck (wbp->win, wbp->prefs->only_maximized, wbp);
+    wbp->win->get_plugin = NULL;
+    init_wnck (wbp->win, wbp->prefs->only_maximized, FALSE, wbp);
 
     /* get theme */
     init_theme (wbp);

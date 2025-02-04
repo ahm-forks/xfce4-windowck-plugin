@@ -307,7 +307,8 @@ wcktitle_construct (XfcePanelPlugin *plugin)
 
     /* start tracking title text */
     wtp->win = g_slice_new0 (WckUtils);
-    init_wnck (wtp->win, wtp->prefs->only_maximized, wtp);
+    wtp->win->get_plugin = NULL;
+    init_wnck (wtp->win, wtp->prefs->only_maximized, FALSE, wtp);
 
     /* start tracking title size */
     init_title (wtp);

@@ -28,9 +28,11 @@ G_BEGIN_DECLS
 
 #define SETTING_ONLY_MAXIMIZED  "/only-maximized"
 #define SETTING_SHOW_ON_DESKTOP "/show-on-desktop"
+#define SETTING_ONLY_CURRDISPLAY "/only-current-display"
 
 /* default settings */
 #define DEFAULT_ONLY_MAXIMIZED TRUE
+#define DEFAULT_ONLY_CURRDISPLAY FALSE
 #define DEFAULT_SHOW_ON_DESKTOP FALSE
 
 typedef void (*WckSettingsCb) (gpointer prefs);
