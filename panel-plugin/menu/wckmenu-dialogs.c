@@ -41,6 +41,13 @@ on_only_maximized_toggled (GtkRadioButton *only_maximized, WckMenuPlugin *wmp)
     reload_wnck_icon (wmp);
 }
 
+static void
+on_only_current_display_toggled (GtkToggleButton *only_current_display, WckMenuPlugin *wmp)
+{
+    wmp->prefs->only_current_display = gtk_toggle_button_get_active (only_current_display);
+    reload_wnck_icon (wmp);
+}
+
 
 static void
 on_show_on_desktop_toggled (GtkToggleButton *show_on_desktop, WckMenuPlugin *wmp)
@@ -80,38 +87,41 @@ build_properties_area (WckMenuPlugin *wmp, const gchar *buffer, gsize length)
     if (gtk_builder_add_from_string(wmp->prefs->builder, buffer, length, &error)) {
         GObject *area = gtk_builder_get_object(wmp->prefs->builder, "vbox0");
 
-        if (G_LIKELY (area != NULL))
-        {
+        if (G_LIKELY (area != NULL)) {
             GtkRadioButton *only_maximized, *active_window;
             GtkToggleButton *show_on_desktop;
+            GtkToggleButton *only_current_display;
             GtkToggleButton *show_app_icon;
 
             only_maximized = GTK_RADIO_BUTTON (wck_dialog_get_widget (wmp->prefs->builder, "only_maximized"));
             active_window = GTK_RADIO_BUTTON (wck_dialog_get_widget (wmp->prefs->builder, "active_window"));
-            if (G_LIKELY (only_maximized != NULL && active_window != NULL))
-            {
+            if (G_LIKELY (only_maximized != NULL && active_window != NULL)) {
                 gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(only_maximized), wmp->prefs->only_maximized);
                 gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(active_window), !wmp->prefs->only_maximized);
                 g_signal_connect(only_maximized, "toggled", G_CALLBACK(on_only_maximized_toggled), wmp);
             }
 
             show_on_desktop = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wmp->prefs->builder, "show_on_desktop"));
-            if (G_LIKELY (show_on_desktop != NULL))
-            {
+            if (G_LIKELY (show_on_desktop != NULL)) {
                 gtk_toggle_button_set_active(show_on_desktop, wmp->prefs->show_on_desktop);
                 g_signal_connect(show_on_desktop, "toggled", G_CALLBACK(on_show_on_desktop_toggled), wmp);
             }
 
+            only_current_display = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wmp->prefs->builder, "only_current_display"));
+            if (G_LIKELY (only_current_display != NULL)) {
+                gtk_toggle_button_set_active (only_current_display, wmp->prefs->only_current_display);
+                g_signal_connect (only_current_display, "toggled",
+                                  G_CALLBACK (on_only_current_display_toggled), wmp);
+            }
+
             show_app_icon = GTK_TOGGLE_BUTTON (wck_dialog_get_widget (wmp->prefs->builder, "show_app_icon"));
-            if (G_LIKELY (show_app_icon != NULL))
-            {
+            if (G_LIKELY (show_app_icon != NULL)) {
                 gtk_toggle_button_set_active(show_app_icon, wmp->prefs->show_app_icon);
                 g_signal_connect(show_app_icon, "toggled", G_CALLBACK(on_show_app_icon_toggled), wmp);
             }
 
             return GTK_WIDGET(area);
-        }
-        else {
+        } else {
             g_set_error_literal (&error, 0, 0, "No widget with the name \"vbox0\" found");
         }
     }
