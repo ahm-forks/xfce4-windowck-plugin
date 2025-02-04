@@ -245,6 +245,9 @@ on_refresh_item_activated (GtkMenuItem *refresh, WckTitlePlugin *wtp)
     reload_wnck_title (wtp);
 }
 
+static XfcePanelPlugin* wcktitle_get_plugin(gpointer wtp) {
+    return ((WckTitlePlugin *) wtp)->plugin;
+}
 
 static void
 wcktitle_construct (XfcePanelPlugin *plugin)
@@ -308,8 +311,9 @@ wcktitle_construct (XfcePanelPlugin *plugin)
 
     /* start tracking title text */
     wtp->win = g_slice_new0 (WckUtils);
-    wtp->win->get_plugin = NULL;
-    init_wnck (wtp->win, wtp->prefs->only_maximized, FALSE, wtp);
+    wtp->win->get_plugin = wcktitle_get_plugin;
+
+    init_wnck (wtp->win, wtp->prefs->only_maximized, wtp->prefs->only_current_display, wtp);
 
     /* start tracking title size */
     init_title (wtp);
