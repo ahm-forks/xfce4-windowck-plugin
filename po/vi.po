@@ -1,0 +1,204 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-panel-plugins.xfce4-windowck-plugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Nick Schermer <nick@xfce.org>, 2022
+# Cas Pascal <casboi86@gmail.com>, 2024
+# Loc Huynh, 2025
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: xfce-panel-plugins.xfce4-windowck-plugin\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2025-07-18 11:09+0200\n"
+"PO-Revision-Date: 2022-04-20 11:58+0000\n"
+"Last-Translator: Loc Huynh, 2025\n"
+"Language-Team: Vietnamese (https://app.transifex.com/xfce/teams/16840/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: common/wck-plugin.c:176
+msgid "_Refresh"
+msgstr "_Làm mới"
+
+#: common/wck-plugin.c:213
+msgid "Help"
+msgstr "Trợ giúp"
+
+#: common/wck-plugin.c:214
+msgid "_Close"
+msgstr "Đóng"
+
+#: common/wck-plugin.c:257
+#, c-format
+msgid "Unable to open the following url: %s"
+msgstr "Không thể mở url sau: %s"
+
+#: common/wck-plugin.c:284
+msgid "Unsupported windowing environment"
+msgstr "Môi trường cửa sổ không được hỗ trợ"
+
+#: common/wck-plugin.c:285
+msgid "_OK"
+msgstr "ĐƯỢ_C RỒI"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.c:318
+msgid "Directory"
+msgstr "Thư mục"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.c:320
+msgid "Themes usable"
+msgstr "Chủ đề có thể sử dụng"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:32
+#: panel-plugin/menu/wckmenu-dialogs.glade:32
+#: panel-plugin/title/wcktitle-dialogs.glade:66
+msgid "Control maximized windows."
+msgstr "Kiểm soát các cửa sổ tối đa hóa."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:46
+#: panel-plugin/menu/wckmenu-dialogs.glade:46
+#: panel-plugin/title/wcktitle-dialogs.glade:80
+msgid "Control active windows."
+msgstr "Kiểm soát các cửa sổ đang hoạt động."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:61
+msgid "Show the buttons on desktop."
+msgstr "Hiển thị các nút trên máy tính để bàn."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:65
+msgid "Clicking the close button on the desktop causes log out."
+msgstr "Nhấp vào nút đóng trên màn hình sẽ khiến đăng xuất."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:80
+#: panel-plugin/menu/wckmenu-dialogs.glade:79
+#: panel-plugin/title/wcktitle-dialogs.glade:113
+msgid "<b>Behaviour</b>"
+msgstr "<b>Hành vi</b>"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:109
+msgid "Get in sync with the window manager theme."
+msgstr "Đồng bộ hóa với chủ đề trình quản lý cửa sổ."
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:153
+msgid "Button layout:"
+msgstr "Bố trí nút:"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:166
+msgid ""
+"Put the buttons id in the desired order.\n"
+"Example: [HMC]\n"
+"H=Hide, M=Maximize/unMaximize, C=Close"
+msgstr ""
+"Đặt id nút theo thứ tự mong muốn.\n"
+"Ví dụ: [HMC]\n"
+"H=Ẩn, M=Tối đa hóa/không tối đa hóa, C=Đóng"
+
+#: panel-plugin/buttons/wckbuttons-dialogs.glade:195
+#: panel-plugin/menu/wckmenu-dialogs.glade:127
+#: panel-plugin/title/wcktitle-dialogs.glade:427
+msgid "<b>Appearance</b>"
+msgstr "<b>Diện mạo</b>"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:5
+msgid "Window Header - Buttons"
+msgstr "Tiêu đề cửa sổ - Nút"
+
+#: panel-plugin/buttons/wckbuttons.desktop.in:6
+msgid "Put the maximized window buttons on the panel."
+msgstr "Đặt các nút cửa sổ zoom trên bảng điều khiển."
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:61
+#: panel-plugin/title/wcktitle-dialogs.glade:95
+msgid "Show the plugin on desktop."
+msgstr "Hiển thị plugin trên máy tính để bàn."
+
+#: panel-plugin/menu/wckmenu-dialogs.glade:108
+msgid "Show the window Icon."
+msgstr "Hiển thị biểu tượng cửa sổ."
+
+#: panel-plugin/menu/wckmenu.desktop.in:5
+msgid "Window Header - Menu"
+msgstr "Tiêu đề cửa sổ - Menu"
+
+#: panel-plugin/menu/wckmenu.desktop.in:6
+msgid "Put the maximized window menu on the panel."
+msgstr "Đặt menu cửa sổ zoom trên bảng điều khiển."
+
+#: panel-plugin/title/wcktitle-dialogs.glade:12
+msgid "at most"
+msgstr "nhiều nhất"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:15
+msgid "fixed to"
+msgstr "cố định vào"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:18
+msgid "expand"
+msgstr "mở rộng"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:29
+msgid "left"
+msgstr "bên trái"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:32
+msgid "center"
+msgstr "trung tâm"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:35
+msgid "right"
+msgstr "phải"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:150
+msgid "Width:"
+msgstr "Chiều ngang:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:201
+msgid "chars"
+msgstr "ký tự"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:230
+msgid "Padding:"
+msgstr "Phần đệm:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:260
+msgid "pixels"
+msgstr "pixel"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:281
+msgid "Show the full title name"
+msgstr "Hiển thị tên tiêu đề đầy đủ"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:295
+msgid "Display the title in two lines"
+msgstr "Hiển thị tiêu đề thành hai dòng"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:309
+msgid "Sync the font with the window manager."
+msgstr "Đồng bộ hóa phông chữ với trình quản lý cửa sổ."
+
+#: panel-plugin/title/wcktitle-dialogs.glade:333
+msgid "Title font:"
+msgstr "Phông chữ tiêu đề:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:361
+msgid "Subtitle font:"
+msgstr "Phông chữ phụ đề:"
+
+#: panel-plugin/title/wcktitle-dialogs.glade:389
+msgid "Alignment:"
+msgstr "Căn chỉnh:"
+
+#: panel-plugin/title/wcktitle.desktop.in:5
+msgid "Window Header - Title"
+msgstr "Tiêu đề cửa sổ - Tiêu đề"
+
+#: panel-plugin/title/wcktitle.desktop.in:6
+msgid "Put the maximized window title on the panel."
+msgstr "Đặt tiêu đề cửa sổ tối đa trên bảng điều khiển."
