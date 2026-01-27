@@ -176,6 +176,7 @@ wcktitle_free (XfcePanelPlugin *plugin, WckTitlePlugin *wtp)
 {
     GtkWidget *dialog;
 
+    wck_signal_handler_disconnect (G_OBJECT (wtp->controlwindow), wtp->cnh);
     disconnect_wnck (wtp->win);
 
     /* check if the dialog is still open. if so, destroy it */

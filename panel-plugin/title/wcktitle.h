@@ -81,6 +81,7 @@ typedef struct {
 
     WckTitlePreferences     *prefs;
     WckUtils *win;
+    WnckWindow *controlwindow;
 
     gulong cnh;                     // controlled window name handler id
 

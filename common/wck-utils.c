@@ -321,9 +321,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 void disconnect_wnck (WckUtils *win)
 {
     /* disconnect all signal handlers */
-    wck_signal_handler_disconnect (G_OBJECT(win->controlwindow), win->ash);
-    wck_signal_handler_disconnect (G_OBJECT(win->controlwindow), win->msh);
-    wck_signal_handler_disconnect (G_OBJECT(win->controlwindow), win->mwh);
+    if (win->controlwindow)
+      g_signal_handlers_disconnect_by_data (win->controlwindow, win);
+    if (win->activewindow)
+      g_signal_handlers_disconnect_by_data (win->activewindow, win);
+    if (win->umaxwindow)
+      g_signal_handlers_disconnect_by_data (win->umaxwindow, win);
 
     wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->sah);
     wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->sch);

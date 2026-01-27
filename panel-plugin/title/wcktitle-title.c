@@ -198,7 +198,8 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
     WckTitlePlugin *wtp = data;
 
     /* disconect previous window title signal */
-    wck_signal_handler_disconnect (G_OBJECT(previous), wtp->cnh);
+    wck_signal_handler_disconnect (G_OBJECT(wtp->controlwindow), wtp->cnh);
+    wtp->controlwindow = NULL;
 
     on_wck_state_changed (controlwindow, wtp);
 
@@ -217,6 +218,7 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
 
     if (controlwindow && !window_is_desktop (controlwindow))
     {
+        wtp->controlwindow = controlwindow;
         wtp->cnh = g_signal_connect (G_OBJECT (controlwindow), "name-changed",
                                      G_CALLBACK (on_name_changed), wtp);
     }
