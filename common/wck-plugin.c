@@ -271,7 +271,7 @@ wck_configure_response (XfcePanelPlugin *plugin, GtkWidget *dialog, gint respons
 
 
 gboolean
-wck_abort_non_x11_windowing (XfcePanelPlugin *plugin)
+wck_check_x11_windowing (GdkScreen *screen)
 {
 #ifdef GDK_WINDOWING_X11
     gboolean x11_windowing = GDK_IS_X11_DISPLAY (gdk_display_get_default ());
@@ -280,14 +280,13 @@ wck_abort_non_x11_windowing (XfcePanelPlugin *plugin)
 #endif
     if (!x11_windowing)
     {
-        GtkWidget *dialog = xfce_message_dialog_new (NULL, xfce_panel_plugin_get_display_name (plugin), "dialog-error",
+        GtkWidget *dialog = xfce_message_dialog_new (NULL, NULL, "dialog-error",
                                                      _("Unsupported windowing environment"), NULL,
                                                      _("_OK"), GTK_RESPONSE_OK, NULL);
         gtk_dialog_run (GTK_DIALOG (dialog));
         gtk_widget_destroy (dialog);
-        xfce_panel_plugin_remove (plugin);
-        return TRUE;
+        return FALSE;
     }
 
-    return FALSE;
+    return TRUE;
 }

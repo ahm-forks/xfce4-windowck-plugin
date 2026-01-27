@@ -254,10 +254,6 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
     /* setup transation domain */
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
-    /* abort on non X11 environments */
-    if (wck_abort_non_x11_windowing (plugin))
-        return;
-
     /* create the plugin */
     wmp = wckmenu_new(plugin);
 
@@ -303,4 +299,4 @@ static void wckmenu_construct(XfcePanelPlugin *plugin)
 
 
 /* register the plugin */
-XFCE_PANEL_PLUGIN_REGISTER(wckmenu_construct);
+XFCE_PANEL_PLUGIN_REGISTER_WITH_CHECK(wckmenu_construct, wck_check_x11_windowing);
